@@ -1,3 +1,4 @@
+'use strict';
 const http = require('http'); // http server functionality
 const fs = require('fs'); // file system functionality
 const path = require('path'); // path functionality
@@ -6,8 +7,6 @@ const chatServer = require('./lib/chat_server'); //chat functionality by socket.
 const port = process.env.port || 3000; //port
 
 const cache = {}; //save contents cache files
-
-chatServer.listen(server); //runs socket.io server by giving it http port
 
 //creating server and send static files
 const server = http.createServer((req, res) => {
@@ -23,6 +22,7 @@ const server = http.createServer((req, res) => {
 
 //listening server
 server.listen(port, () => {console.log('server listening on port ' + port)});
+chatServer.listen(server); //runs socket.io server by giving it http port
 
 //function of handling errors
 const send404 = (res) => {
@@ -49,7 +49,7 @@ const serverStatic = (res, cache, absPath) => {
                         send404(res);
                     } else {
                         cache[absPath] = data;
-                        send404(res, absPath, data);
+                        sendFile(res, absPath, data);
                     }
                 })
             } else {
