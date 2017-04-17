@@ -27,6 +27,8 @@ Chat.prototype.processCommand = (command) => {
     //get command word from array
     let command = words[0].substring(1, words[0].length).toLowerCase();
 
+    var message  = false;
+
     switch (command) {
         //if command is join call method changeRoom
         case 'join':
@@ -47,4 +49,3 @@ Chat.prototype.processCommand = (command) => {
     }
     return message;
 };
-
