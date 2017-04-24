@@ -4,32 +4,32 @@ const Chat = function(socket) {
 };
 
 //send chat message method
-Chat.prototype.sendMessage = (room, text) => {
+Chat.prototype.sendMessage = function(room, text) {
     let message = {
         room: room,
-        test: text
+        text: text
     };
 
     this.socket.emit('message', message);
 };
 
 //changing room method
-Chat.prototype.changeRoom = (room) => {
+Chat.prototype.changeRoom = function(room) {
     socket.emit('join', {
         newRoom: room
     });
 };
 
 //handling user commands
-Chat.prototype.processCommand = (command) => {
+Chat.prototype.processCommand = function(command) {
     //get message to array
     let words = command.split(" ");
     //get command word from array
-    let command = words[0].substring(1, words[0].length).toLowerCase();
+    let commands = words[0].substring(1, words[0].length).toLowerCase();
 
     var message  = false;
 
-    switch (command) {
+    switch (commands) {
         //if command is join call method changeRoom
         case 'join':
             words.shift();

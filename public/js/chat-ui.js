@@ -17,7 +17,7 @@ const processUserInput = (chatApp, socket) => {
         }
     } else {
         chatApp.sendMessage($('#room').text(), message);
-        $('#messages').append(divEscapedContentElement(systemMessage));
+        // $('#messages').append(divEscapedContentElement(message));
         $('#messages').scrollTop($('#messages').prop('scrollHeight'));
     }
     $('#send-message').val('');
