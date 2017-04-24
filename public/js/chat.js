@@ -1,5 +1,5 @@
 //new class Chat with socket parameter
-const Chat = (socket) => {
+const Chat = function(socket) {
   this.socket = socket;
 };
 
