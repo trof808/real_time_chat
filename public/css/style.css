@@ -37,7 +37,7 @@ background-color: rgba(0,255,0,.2);
   float: right;
   width: 224px;
   height: 300px;
-  overflow: hidden;
+  overflow-y: scroll;
 }
 #room-list div {
   border-bottom: 1px solid #eee;
