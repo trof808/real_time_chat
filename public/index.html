@@ -33,12 +33,12 @@
   <script src="/js/chat-ui.js"></script>
   <script>
   const socket = io.connect();
-  $(() => {
+  $(function() {
 
     const chatApp = new Chat(socket);
 
     //output name changes result
-    socket.on('nameResult', (result) => {
+    socket.on('nameResult', function(result) {
       var message;
 
       if(result.success) {
@@ -51,42 +51,44 @@
     });
 
     //output changing rooms result
-    socket.on('joinResult', (result) => {
+    socket.on('joinResult', function(result) {
       $('#room').text(result.room);
 
       $('#messages').append(divSystemContentElement('Room changed'));
     });
 
     //out put messages
-    socket.on('message', (message) => {
+    socket.on('message', function(message) {
       var newElement = $('<div></div>').text(message.text);
 
       $('#messages').append(newElement);
     });
 
     //output list of availale rooms
-    socket.on('rooms', (rooms) => {
+    socket.on('rooms', function(rooms) {
       $('#room-list').empty();
       for(var room in rooms) {
-        room = room.substring(1, room.length);
+        room = room.substring(0, room.length);
+
         if(room != '') {
           $('#room-list').append($('<div></div>').text(room));
         }
       }
 
-      $('#room-list div').click(() => {
+      $('#room-list div').click(function() {
+        console.log($(this).text());
         chatApp.processCommand('/join ' + $(this).text());
         $('#send-message').focus();
       })
     });
 
-    setInterval(() => {
+    setInterval(function() {
       socket.emit('rooms');
     }, 1000);
 
     $('#send-message').focus();
 
-    $('#send-form').on('submit', () => {
+    $('#send-form').on('submit', function() {
       processUserInput(chatApp, socket);
       return false;
     });
