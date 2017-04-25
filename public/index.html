@@ -68,10 +68,11 @@
     socket.on('rooms', function(rooms) {
       $('#room-list').empty();
       for(var room in rooms) {
-        room = room.substring(0, room.length);
+        console.log(room);
+        roomName = room.substring(0, room.length);
 
-        if(room != '') {
-          $('#room-list').append($('<div></div>').text(room));
+        if(roomName != '') {
+          $('#room-list').append('<div>'+ roomName +' <span>'+ rooms[room] +'</span></div>');
         }
       }
 
