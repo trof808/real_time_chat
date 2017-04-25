@@ -16,7 +16,11 @@ const processUserInput = (chatApp, socket) => {
             $('#messages').append(divSystemContentElement(systemMessage));
         }
     } else {
-        chatApp.sendMessage($('#room').text(), message);
+        let options = {
+          text: message,
+          flag: 'mes'
+        }
+        chatApp.sendMessage($('#room').text(), options);
         // $('#messages').append(divEscapedContentElement(message));
         $('#messages').scrollTop($('#messages').prop('scrollHeight'));
     }

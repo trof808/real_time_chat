@@ -3,29 +3,53 @@ body {
   font: 14px Arial;
 }
 #content {
-  width: 800px;
+  width: 1024px;
   margin: auto;
 }
 #room {
   background-color: #ddd;
   margin-bottom: 1em;
+  padding: 10px;
+font-size: 17px;
 }
 #messages {
-  width: 690px;
+  width: 800px;
   height: 300px;
   overflow: auto;
   background-color: #eee;
   margin-bottom: 1em;
   margin-right: 10px;
 }
+#messages li {
+  list-style-type: none;
+  padding: 5px;
+border-bottom: 1px solid #aaa;
+background-color: rgba(0,255,0,.2);
+}
+#messages div {
+  padding: 5px;
+  border-bottom: 1px solid #aaa;
+}
+#messages div.msg {
+  background-color: rgba(0,0,255,.2);
+}
 #room-list {
   float: right;
-  width: 100px;
+  width: 224px;
   height: 300px;
   overflow: hidden;
 }
 #room-list div {
   border-bottom: 1px solid #eee;
+  padding: 5px;
+}
+/*.room-name {
+  display: block;
+  float: left;
+}*/
+.room-count {
+  display: block;
+  float: right;
 }
 #room-list div:hover {
   background-color: #ddd;
