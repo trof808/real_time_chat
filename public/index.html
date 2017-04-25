@@ -68,17 +68,17 @@
     socket.on('rooms', function(rooms) {
       $('#room-list').empty();
       for(var room in rooms) {
-        console.log(room);
+        // console.log(room);
         roomName = room.substring(0, room.length);
 
         if(roomName != '') {
-          $('#room-list').append('<div>'+ roomName +' <span>'+ rooms[room] +'</span></div>');
+          $('#room-list').append('<div><span class="room-name">'+ roomName +'</span> <span>'+ rooms[room] +'</span></div>');
         }
       }
 
       $('#room-list div').click(function() {
-        console.log($(this).text());
-        chatApp.processCommand('/join ' + $(this).text());
+        // console.log($(this).find('span.room-name').text());
+        chatApp.processCommand('/join ' + $(this).find('span.room-name').text());
         $('#send-message').focus();
       })
     });
